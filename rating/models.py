@@ -1,7 +1,7 @@
 from django.db import models
 import datetime as dt
 from django.contrib.auth.models import User
-
+from PIL import Image
 
 
 # Create your models here.
@@ -20,8 +20,8 @@ class Profile(models.Model):
         self.save()
 
 class Project(models.Model):
-    project_title = models.CharField(max_lenth=30)
+    project_title = models.CharField(max_length=30)
     project_description = models.TextField(max_length=255)
-    pub_date = models.DatTimeField(auto_now=True)
+    pub_date = models.DateTimeField(auto_now=True)
     project_author = models.ForeignKey(User, on_delete=models.CASCADE)
-    
+

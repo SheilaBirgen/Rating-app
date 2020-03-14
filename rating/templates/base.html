@@ -1,12 +1,14 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% block styles%}
-    {% endblock%}
+    {% if title %}
+    <title>Awwards - {{title}}</title>
+    {% else %}
+    <title> Awwards</title>
+    {% endif %}
 </head>
 <body>
     
