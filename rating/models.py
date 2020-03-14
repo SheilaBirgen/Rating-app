@@ -56,3 +56,13 @@ class Project(models.Model):
     def search_by_title(cls, search_term):
         projects = cls.objects.filter(title__icontains=search_term)
         return projects
+
+class Reviews(models.Model):
+    design = models.PositiveSmallIntegerField(default=0)
+    usability = models.PositiveSmallIntegerField(default=0)
+    content = models.PositiveSmallIntegerField(default=0)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default='1')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, default='project_folder/')
+
+    def __str__(self):
+        return f'{self.design}'
