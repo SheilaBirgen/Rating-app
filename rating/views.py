@@ -50,7 +50,22 @@ def signup(request):
             email = form.cleaned_data['email']
             user = form.save()
             auth_login(request, user)
-            return redirect('home')
+            return redirect('login')
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})
+
+
+@login_required(login_url='/login')
+def post_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = PostProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.author = current_user
+            image.save()
+        return redirect('/')
+    else:
+        form = PostProjectForm(auto_id=False)
+    return render(request, 'new_project.html', {"form": form})
