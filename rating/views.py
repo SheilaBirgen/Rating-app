@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login
 from .forms import *
 from .models import *
 import datetime as dt
 from django.contrib.auth.decorators import login_required
-
+from django.http import HttpResponse, Http404
+from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 def home(request):
@@ -39,7 +41,7 @@ def Profile(request):
     return render(request, 'profile.html', context)
 
     
-def signup(request):
+def Registration(request):
     '''
     View function for user signup
     '''
@@ -69,3 +71,32 @@ def post_project(request):
     else:
         form = PostProjectForm(auto_id=False)
     return render(request, 'new_project.html', {"form": form})
+
+@login_required(login_url='/login/')
+def get_project(request,project_id):
+    form = ReviewForm()
+    try:
+        project =Projects.object.all(id=project_id)
+        print(project)
+    except DoesNotExist:
+        raise Http404()
+    context ={
+        "project": project,
+        "form": form
+    }
+    return render(request, 'project.html', context)
+
+def search_results(request):
+    if 'projects' in request.GET and request.GET["projects"]:
+        search_term = request.GET.get('projects')
+        searched_projects = Projects.search_by_title(search_term)
+        message = f'{search_term}'
+
+        context = {
+            "message": message,
+            "projects": searched_projects
+        }
+        return render(request, 'search.html', context)
+    else:
+        message = "Search a project by title"
+        return render(request, 'search.html', {"message": message})
