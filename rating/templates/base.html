@@ -20,15 +20,13 @@
      <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
      <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     
-    {{% endblock%}}
+    {% endblock%}
 </head>
 <body>
     {% include 'navbar.html' %}
     {% block content %}
     {% endblock %}
-    {% include 'footer.html' %}
     {% block scripts %}
-    {% bootstrap_javascript %}
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->

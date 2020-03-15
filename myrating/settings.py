@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rating',
+    'bootstrap4',
     'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from rating import views as rating_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('rating.urls'))
+    path('', include('rating.urls')),
+    path('', include('django.contrib.auth.urls')),
 ]
