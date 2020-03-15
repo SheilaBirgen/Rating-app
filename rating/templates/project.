@@ -1,0 +1,70 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% load ratings %}
+{%block content%}
+{{block.super}}
+<style>
+    span{
+        text-decoration:underline;
+        font-size:29px;
+    }
+    .card-title{
+        background-image: url('{{project.image.url}}');
+        height:700px;
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position: center;
+        border-radius:1%;
+        background-color: #5f6769;
+    }
+    form{
+        padding:5px;
+    }
+    button{
+        border-radius:50%;
+    }
+    .overlay{
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+</style>
+<div class="container mt-3">
+        <div class="card-header" style="background:white;">
+            <h1 class="text-center">{{project.title}}</h1>
+            {{project.description}}
+        </div>
+        <div class="card-title">
+
+        </div>
+        <div class="text-center">
+                <a href="{{project.link}}" target="_blank">
+                    <button type="button" class="btn btn-sm btn-outline-success btn-rounde waves-effect">
+                        Visit
+                    </button>
+                </a>
+                {{project.post_date|date}}
+                By: {{project.author|capfirst}}
+            </div>
+        </div>
+        <div class="container-fluid">
+            <hr>
+            <div class="row text-center">
+                <div class="col-md-2"></div>
+                <div class=" col-md-8 col-sm-8">
+                    <h1 class="">Reviews and rates</h1>
+            <h1 class="">{% ratings project %}</h1>
+            <h4 class="">Tell us what you think!</h4>
+            <form action="" method="post" class="form-control">
+
+            </form>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+
+</div>
+{% endblock %}
