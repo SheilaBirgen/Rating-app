@@ -21,7 +21,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'z!*06i9%job6@zd86q+sqqj#99efqpfi3-%@@@^4uwy(oxf#qo'
- 'crispy_forms',
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
