@@ -1,9 +1,1 @@
-SECRET_KEY='z!*06i9%job6@zd86q+sqqj#99efqpfi3-%@@@^4uwy(oxf#qo'
-DEBUG=True 
-DB_NAME='awwards'
-DB_USER='birgen'
-DB_PASSWORD='admin'
-DB_HOST='127.0.0.1'
-MODE='dev' 
-ALLOWED_HOSTS='.localhost', '.herokuapp.com', '.127.0.0.1'
-DISABLE_COLLECTSTATIC=1
+.env
