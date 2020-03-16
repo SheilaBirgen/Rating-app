@@ -7,8 +7,26 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, Http404
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
+from rest_framework import viewsets, permissions
+from .serializers import ProjectSerializer, ProfileSerializer
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 # Create your views here.
+class ProjectView(APIView):
+    def get(self, request, format=None):
+        projects = Projects.objects.all()
+        serializer = ProjectSerializer(projects, many=True)
+        return Response(serializer.data)
+
+
+class ProfileView(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    
+
 def home(request):
     today = dt.date.today()
     projects = Project.get_projects()
