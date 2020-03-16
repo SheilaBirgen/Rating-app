@@ -10,6 +10,11 @@ django-widget-tweaks = "*"
 bootstrap4 = "*"
 django-crispy-forms = "*"
 djangorestframework = "*"
+gunicorn = "*"
+django-heroku = "*"
+whitenoise = "*"
+python-decouple = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
