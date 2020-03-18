@@ -57,6 +57,7 @@ You can reach out to me through the github account SheilaBirgen
 or on my email as jeronobergen@gmail.com
 
 ## CodeBeat Badge
+[![codebeat badge](https://codebeat.co/badges/ce530a8d-6b82-403d-ac19-724f16c0fb70)](https://codebeat.co/projects/github-com-sheilabirgen-rating-app-master)
 
 ## License
 @2019 Sheila Birgen 
