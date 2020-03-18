@@ -60,7 +60,7 @@ class Project(models.Model):
         return proj
 
     @classmethod
-    def get_projects(cls):
+    def get_project(cls):
         project = cls.objects.all()
         return project
 

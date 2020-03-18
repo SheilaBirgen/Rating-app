@@ -9,7 +9,7 @@ Awwards is an app where users can upload their site links and can be rated on th
 ##### Open the command-line and run the following command to open a directory:
   - ```cd your preferred directory``` => ```cd Desktop```
 ##### Git clone the project on your current directory by:
-  - ```https://github.com/SheilaBirgen/Django-2```.
+  - ```https://github.com/SheilaBirgen/Rating-app```.
 ##### Move to your project directory:
 - ```cd Django-2```.
 ##### Open the project on your terminal:

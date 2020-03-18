@@ -16,8 +16,8 @@ from django.conf import settings
 # Create your views here.
 class ProjectView(APIView):
     def get(self, request, format=None):
-        projects = Projects.objects.all()
-        serializer = ProjectSerializer(projects, many=True)
+        project = Project.objects.all()
+        serializer = ProjectSerializer(project, many=True)
         return Response(serializer.data)
 
 
@@ -30,34 +30,29 @@ class ProfileView(viewsets.ModelViewSet):
 
 def home(request):
     today = dt.date.today()
-    projects = Project.get_projects()
+    project = Project.get_project()
     context = {
         "today":today,
-        "projects":projects,
+        "project":project,
     }
     return render(request, 'index.html', context)
 
 @login_required(login_url='/login')
 def Profile(request):
-    photo = Projects.get_projects()
+    photo = Project.get_project()
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
-        if user_form.is_valid() and p_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             messages.success(request, f'You have successfully updated your profile!')
             return redirect('/profile')
     else:
         user_form = UserUpdateForm(instance=request.user)
-        profile_form = ProfileUpdateForm(instance=request.user.profile)
+        profile_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
 
-    context = {
-    'user_form':user_form,
-    'profile_form':profile_form,
-    'posts':posts,
-    }
-    return render(request, 'profile.html', context)
+    return render(request, 'profile.html', {"user_form":user_form, "profile_form":profile_form, "photo":photo})
 
     
 def Registration(request):
@@ -68,6 +63,7 @@ def Registration(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
+            auth_login(request, user)
             return redirect('/login')
     else:
         form = SignUpForm()
@@ -92,7 +88,7 @@ def post_project(request):
 def get_project(request,project_id):
     form = ReviewForm()
     try:
-        project =Projects.object.all(id=project_id)
+        project =Project.object.all(id=project_id)
         print(project)
     except DoesNotExist:
         raise Http404()
@@ -103,14 +99,14 @@ def get_project(request,project_id):
     return render(request, 'project.html', context)
 
 def search_results(request):
-    if 'projects' in request.GET and request.GET["projects"]:
-        search_term = request.GET.get('projects')
-        searched_projects = Projects.search_by_title(search_term)
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get('project')
+        searched_project = Project.search_by_title(search_term)
         message = f'{search_term}'
 
         context = {
             "message": message,
-            "projects": searched_projects
+            "project": searched_project
         }
         return render(request, 'search.html', context)
     else:
