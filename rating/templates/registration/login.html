@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-6">
-          <form action="" method="post" class="form-group">
+          <form id='login-form'action="" method="post" class="form-group">
         {% csrf_token %}
         {{form|crispy}}
         <p>Don't have an account?<a href="{%url 'register'%}">Sign Up</a></p>

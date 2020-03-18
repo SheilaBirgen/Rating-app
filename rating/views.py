@@ -38,7 +38,7 @@ def home(request):
 
 @login_required(login_url='/login')
 def Profile(request):
-    pics = Projects.get_projects()
+    photo = Projects.get_projects()
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
