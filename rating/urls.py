@@ -9,8 +9,8 @@ router = routers.DefaultRouter()
 router.register('profiles', views.ProfileView)
 
 urlpatterns = [
-    path('',views.home, name ='home'),
-    path('registration/', views.Registration, name='registration'),
+    path('',views.home, name ='home'), 
+    path('register/', views.Registration, name='register'),
     path('profile/', views.Profile, name='profile'),
     path('new_site/', views.post_project, name='new_site'),
     path('project/<int:project_id>', views.get_project, name='project'),

@@ -11,6 +11,7 @@ from rest_framework import viewsets, permissions
 from .serializers import ProjectSerializer, ProfileSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.conf import settings
 
 # Create your views here.
 class ProjectView(APIView):
@@ -66,11 +67,8 @@ def Registration(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['username']
-            email = form.cleaned_data['email']
-            user = form.save()
-            auth_login(request, user)
-            return redirect('login')
+            form.save()
+            return redirect('/login')
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
