@@ -27,4 +27,11 @@ Awwards is an app where users can upload their site links and can be rated on th
 ##### After ensuring you have all the above
   - ```python3 manage.py runserver``` to run the project.
   - Then click the local host link given to open the project on a browser ```http://127.0.0.1:8000/```.
-#
+
+### BDD
+
+| Behaviour | Input | Output |
+| --------- | ------| ------ |
+|On loading the app you see the landing page with a navbar at the top and a sign up form| Click `register if its a new user` and `login`if registered | You are redirected to the landing page if you had left the page or just loads the landing page again if you are still on the landing page.|
+|Clicking the `submit project` link on the navbar | Mouse click |You are redirected to a page where various posts are displayed.|
+|Clicking the `Logout`| Mouse click | Displays the `Home` and `logout` links you are logged in`login`.|
