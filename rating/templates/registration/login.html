@@ -1,24 +1,27 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% block title %}
-<title>Login</title>
-{% endblock %}
+{% extends 'registration/base.html' %}
+
 {% block content %}
 <div class="container">
-    <style>
-        form{
-            width: 70%;
-        }
-    </style>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-6">
-          <form id='login-form'action="" method="post" class="form-group">
-        {% csrf_token %}
-        {{form|crispy}}
-        <p>Don't have an account?<a href="{%url 'register'%}">Sign Up</a></p>
-        <button type="submit" class="btn btn-success">Login</button>
-    </form>
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Log in</h3>
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {% include 'form.html' %}
+                        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                    </form>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    Already have an account? <a href="{% url 'signup' %}">Sign Up</a>
+                </div>
+            </div>
+            <div class="text-center py-2">
+                <small>
+                    <a href="#" class="text-muted">Forgot your password?</a>
+                </small>
+            </div>
         </div>
     </div>
 </div>

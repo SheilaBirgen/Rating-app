@@ -17,6 +17,7 @@ python-decouple = "*"
 dj-database-url = "*"
 django-forms-bootstrap = "*"
 django-bootstrap4 = "*"
+django-star-ratings = "*"
 
 [dev-packages]
 

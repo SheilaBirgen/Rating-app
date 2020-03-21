@@ -33,9 +33,11 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 INSTALLED_APPS = [
     'rating',
+    'star_ratings',
     'bootstrap4',
     'crispy_forms',
     'rest_framework',
+    'widget_tweaks',
     'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -8,7 +8,7 @@ from django.db.models.signals import post_save
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(blank=True)
+    bio = models.CharField(max_length=200,blank=True)
     photo = models.ImageField(upload_to = 'profiles/', blank=True, default='profiles/default.jpg')
     contact_info = models.CharField(max_length = 20, blank=True)
    
@@ -69,7 +69,7 @@ class Project(models.Model):
         projects = cls.objects.filter(title__icontains=search_term)
         return projects
 
-class Reviews(models.Model):
+class Rating(models.Model):
     design = models.PositiveSmallIntegerField(default=0)
     usability = models.PositiveSmallIntegerField(default=0)
     content = models.PositiveSmallIntegerField(default=0)
