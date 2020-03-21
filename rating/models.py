@@ -39,13 +39,13 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class Project(models.Model):
-    project_title = models.CharField(max_length=30)
-    project_description = models.TextField(max_length=255)
-    pub_date = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE,default='1')
-    project_image = models.ImageField(upload_to='images/')
-    project_link = models.CharField(max_length=150)
-    profile = models.ForeignKey(Profile,on_delete= models.CASCADE, default='1')
+    image = models.ImageField(upload_to='images/')
+    title = models.CharField(max_length=30)
+    description = models.TextField(max_length=255)
+    link = models.CharField(max_length=150)
+    post_date = models.DateTimeField(auto_now=True)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default='1')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default='1')
 
 
     def __str__(self):
