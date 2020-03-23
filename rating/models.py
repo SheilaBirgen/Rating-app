@@ -54,7 +54,7 @@ class Project(models.Model):
     @classmethod
     def get_project_by_id(cls, id):
         try:
-            proj = Projects.objects.get(pk=id)
+            proj = Project.objects.get(pk=id)
         except ObjectDoesNotExist:
             raise Http404()
         return proj
@@ -66,8 +66,8 @@ class Project(models.Model):
 
     @classmethod
     def search_by_title(cls, search_term):
-        projects = cls.objects.filter(title__icontains=search_term)
-        return projects
+        project = cls.objects.filter(title__icontains=search_term)
+        return project
 
 class Rating(models.Model):
     design = models.PositiveSmallIntegerField(default=0)

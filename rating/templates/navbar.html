@@ -47,7 +47,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/api/projects/?format=json">Projects API</a>
+          <a class="nav-link" href="/api/project/?format=json">Project API</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/profile_api/profiles/?format=json">Profile API</a>
@@ -61,7 +61,7 @@
         <li class="nav-item dropdown">
             <form class="form-inline navbar-form" role="search" action="{%url 'search'%}">
                 <div class="md-form my-0">
-                    <input class="form-control mr-sm-2" type="text" name="projects" placeholder="Search" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="text" name="project" placeholder="Search" aria-label="Search">
                 </div>
             </form>
         </li>
@@ -73,18 +73,13 @@
             Welcome {{user.username|capfirst}}
           </a>
           {% endif %}
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link waves-effect waves-light dropdown-toggle" id="navbarDropdownMenuLink-333"
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-sign-in-alt" style="font-size:26px;"></i>
-          </a>
           <div class="dropdown-menu dropdown-menu-right dropdown-default"
-          aria-labelledby="navbarDropdownMenuLink-333">
-            <a class="dropdown-item" href="register/">Sign-in</a>
-            <a class="dropdown-item" href="/login">Login</a>
-          </div>
+        aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="register/">Sign-in</a>
+          <a class="dropdown-item" href="/login">Login</a>
+        </div>
         </li>
+        
         {%if user.is_authenticated%}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"

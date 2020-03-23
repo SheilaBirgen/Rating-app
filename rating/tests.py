@@ -23,14 +23,14 @@ class TestProject(TestCase):
     def test_save_project(self):
         '''To test saving a project'''
         self.test_project.save_class()
-        projects = Project.objects.all()
-        self.assertTrue(len(projects) == 1)
+        project = Project.objects.all()
+        self.assertTrue(len(project) == 1)
     
     def test_search_project(self):
         '''To test searching for a project'''
         self.test_project.save_class()
-        projects = Project.search_project('Dra')
-        self.assertTrue(len(projects) == 1)
+        project = Project.search_project('Dra')
+        self.assertTrue(len(project) == 1)
 
     def test_get_project_id(self):
         '''Test to get a project by Id'''
@@ -49,7 +49,7 @@ class TestProfile(TestCase):
         '''Set up before every Testcase'''
         self.test_user = User(username='random',email='random@random.com', password='test2020')
         self.test_user.save()
-        self.test_profile = Profile(profile_picture='https://res.cloudinary.com/mutugiii/image/upload/v1583825081/gpnb9j7zld5isfk9s4he.jpg',user=self.test_user, profile_bio='Draaaake????',contact_info='test@test.com')
+        self.test_profile = Profile(profile_picture='https://res.cloudinary.com/image/upload/v1583825081/gpnb9j7zld5isfk9s4he.jpg',user=self.test_user, profile_bio='Draaaake????',contact_info='test@test.com')
         
     def tearDown(self) -> None:
         '''To clean up after running every testcase'''

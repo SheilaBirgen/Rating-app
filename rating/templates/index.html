@@ -46,15 +46,15 @@
 
 <div class="container-fluid mt-4">
     <div class="row">
-        {% if projects%}
-        {% for post in projects %}
+        {% if project %}
+        {% for project in project %}
         <div class="col-md-4">
             <div class="card card-default">
                 <div class="card-heading inline">
                     <div class="row">
                         <div class="col-md-4 mt-2 mb-2 text-center">
                             <a href="{%url 'profile'%}" style="color:black;">
-                                <img src="{{post.author.profile.pic.url}}" class="img-responsive rounded-circle" style="width:50px; height:50px;" alt="profile image">
+                                <img src="{{post.author.profile.photo.url}}" class="img-responsive rounded-circle" style="width:50px; height:50px;" alt="profile image">
                             </a>
                         </div>
                         <div class="col-md-8 mt-2 mb-2">
@@ -77,7 +77,7 @@
         </div>
         {% endfor %}
         {% else %}
-        <p>No Projects have been posted for view yet</p>
+        <p>No Project have been posted for view yet</p>
         {% endif %}
     </div>
 </div>

@@ -38,16 +38,20 @@ def home(request):
     return render(request, 'index.html', context)
 
 @login_required(login_url='/login/')
-def profile(request):
-    '''View Function to get the users Profile'''
-    profile = Profile.objects.filter(user=request.user).first()
-    projects = Project.objects.filter(user=request.user).all()
-    template = loader.get_template('profile.html')
-    context = {
-        'projects': projects,
-        'profile': profile,
-    }
-    return HttpResponse(template.render(context, request))
+def Profile(request):
+    photo = Project.get_project()
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, f'You have successfully updated your profile!')
+            return redirect('/profile')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+    return render(request, 'profile.html', {"user_form": user_form, "profile_form": profile_form, "photo": photo})
 
 @login_required(login_url='/login/')
 def create_profile(request):
@@ -87,7 +91,7 @@ def signup(request):
 def logout_user(request):
     logout(request)
 
-    return redirect(index)
+    return redirect(home)
 
 
 @login_required(login_url='/login')
