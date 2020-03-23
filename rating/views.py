@@ -110,17 +110,8 @@ def post_project(request):
 
 @login_required(login_url='/login/')
 def get_project(request,project_id):
-    form = ReviewForm()
-    try:
-        project =Project.object.all(id=project_id)
-        print(project)
-    except DoesNotExist:
-        raise Http404()
-    context ={
-        "project": project,
-        "form": form
-    }
-    return render(request, 'project.html', context)
+    project =Project.objects.get(pk=project_id)
+    return render(request, 'project.html',  {"project":project})
 
 def search_results(request):
     if 'project' in request.GET and request.GET["project"]:
