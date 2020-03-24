@@ -79,7 +79,7 @@ def signup(request):
             user.save()
             # send_welcome_email(name,email)
             login(request, user)
-            return redirect('create_profile')
+            return redirect('/login')
     else:
         form = SignUpForm()
     template = loader.get_template('registration/signup.html')

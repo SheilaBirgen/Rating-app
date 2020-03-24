@@ -10,7 +10,7 @@ class TestProject(TestCase):
         '''Set up before every Testcase'''
         self.test_user = User(username='random',email='random@random.com', password='test2020')
         self.test_user.save()
-        self.test_project = Project(user=self.test_user, title='Draaaake????', project_image='https://res.cloudinary.com/mutugiii/image/upload/v1583825081/gpnb9j7zld5isfk9s4he.jpg', description='Who is Draaaake????', live_link='https://github.com/Mutugiii/')
+        self.test_project = Project(user=self.test_user, title='Draaaake????', project_image='https://res.cloudinary.com/image/upload/v1583825081/gpnb9j7zld5isfk9s4he.jpg', 
 
     def tearDown(self) -> None:
         '''To clean up after every test case'''
@@ -83,7 +83,7 @@ class TestRating(TestCase):
         '''Prepare for every test case'''
         self.test_user = User(username='random',email='random@random.com', password='test2020')
         self.test_user.save()
-        self.test_project = Project(user=self.test_user, title='Draaaake????', project_image='https://res.cloudinary.com/mutugiii/image/upload/v1583825081/gpnb9j7zld5isfk9s4he.jpg', description='Who is Draaaake????', live_link='https://github.com/Mutugiii/')
+        self.test_project = Project(user=self.test_user, title='Draaaake????', project_image='https://res.cloudinary.com/bg/image/upload/v1583825081/gpnb9j7zld5isfk9s4he.jpg', description='Who is Draaaake????', live_link='https://github.com/SheilaBirgen/')
         self.test_project.save_class()
         self.test_rating = Rating(design='1',usability='7',content='6',user=self.test_user,project=self.test_project)
 
